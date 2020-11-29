@@ -60,7 +60,7 @@ const categoriasYPaginas = [
 
 async function myfunction() {
 
-  fs.appendFile("data.json", '[', 'utf8', function (err) {
+  fs.appendFile("datos/productos.json", '[', 'utf8', function (err) {
     if (err) {
       return console.log(err);
     }
@@ -69,11 +69,11 @@ async function myfunction() {
     scraper.url = `https://soysuper.com/marca/mercadona?products=1&page=${i}&category=mascotas#products`
     await start();
   }
-  fs.appendFile("data.json", ']', 'utf8', function (err) {
+  fs.appendFile("datos/productos.json", ']', 'utf8', function (err) {
     if (err) {
       return console.log(err);
     }
-    console.log("The data has been scraped and saved successfully! View it at './data.json'");
+    console.log("Se han registrado correctamente los productos en datos/productos.json!");
   });
 }
 

@@ -42,7 +42,7 @@ const scraperObject = {
       let currentPageData = await pagePromise(urls[link]);
       console.log(currentPageData);
       currentPageData = JSON.stringify(currentPageData) + ',';
-      fs.appendFile("data.json", currentPageData, 'utf8', function (err) {
+      fs.appendFile("datos/productos.json", currentPageData, 'utf8', function (err) {
         if (err) {
           return console.log(err);
         }
