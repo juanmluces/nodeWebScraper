@@ -1,9 +1,13 @@
-const browserObject = require('./browser');
-const scraperController = require('./pageController');
+const start = async () => {
 
-//Lazna el navegador y crea una instancia de browser
-let browserInstance = browserObject.startBrowser();
+  const browserObject = require('./browser');
+  const scraperController = require('./pageController');
 
-// Pasa la instancia del browser al controlador del scraper
-scraperController(browserInstance);
+  //Lazna el navegador y crea una instancia de browser
+  let browserInstance = await browserObject.startBrowser();
 
+  // Pasa la instancia del browser al controlador del scraper
+  await scraperController(browserInstance);
+}
+
+module.exports = start;

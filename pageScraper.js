@@ -1,3 +1,5 @@
+const fs = require('fs');
+
 const scraperObject = {
   url: 'https://soysuper.com/marca/mercadona?products=1&page=1&category=perfumeria-y-parafarmacia#products',
   async scraper(browser) {
@@ -35,13 +37,24 @@ const scraperObject = {
       await newPage.close();
     });
 
+
     for (link in urls) {
       let currentPageData = await pagePromise(urls[link]);
-      // scrapeData.push(currentPageData);
       console.log(currentPageData);
+      currentPageData = JSON.stringify(currentPageData) + ',';
+      fs.appendFile("data.json", currentPageData, 'utf8', function (err) {
+        if (err) {
+          return console.log(err);
+        }
+      });
     }
 
+    await page.close();
+
+
   }
+
+
 }
 
 module.exports = scraperObject;
