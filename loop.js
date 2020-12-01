@@ -44,7 +44,7 @@ const categoriasYPaginas = [
     paginas: 7
   },
   {
-    categoria: 'baperitivos',
+    categoria: 'aperitivos',
     paginas: 8
   },
   {
@@ -55,25 +55,30 @@ const categoriasYPaginas = [
     categoria: 'cereales-y-galletas',
     paginas: 5
   }
+  ,
+  {
+    categoria: 'bebidas',
+    paginas: 11
+  }
 ]
 
 
 async function myfunction() {
 
-  fs.appendFile("datos/productos.json", '[', 'utf8', function (err) {
+  fs.appendFile("datos/bebidas.json", '[', 'utf8', function (err) {
     if (err) {
       return console.log(err);
     }
   });
-  for (let i = 1; i <= 2; i++) {
-    scraper.url = `https://soysuper.com/marca/mercadona?products=1&page=${i}&category=mascotas#products`
+  for (let i = 1; i <= 11; i++) {
+    scraper.url = `https://soysuper.com/marca/mercadona?products=1&page=${i}&category=bebidas#products`
     await start();
   }
-  fs.appendFile("datos/productos.json", ']', 'utf8', function (err) {
+  fs.appendFile("datos/bebidas.json", ']', 'utf8', function (err) {
     if (err) {
       return console.log(err);
     }
-    console.log("Se han registrado correctamente los productos en datos/productos.json!");
+    console.log("Se han registrado correctamente los productos en datos/bebidas.json!");
   });
 }
 

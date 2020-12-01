@@ -31,7 +31,7 @@ const scraperObject = {
       }
       dataObj['precio'] = await newPage.$eval('span.price strong', text => text.textContent.replace(/\n/g, '').trim());
       dataObj['descripcion'] = await newPage.$eval('span.price', text => text.textContent.split('/')[1].replace(/\n/g, '').trim());
-      dataObj['categoria'] = "Perfumería y Parafarmacia";
+      dataObj['categoria'] = 4;
 
       resolve(dataObj);
       await newPage.close();
@@ -42,7 +42,7 @@ const scraperObject = {
       let currentPageData = await pagePromise(urls[link]);
       console.log(currentPageData);
       currentPageData = JSON.stringify(currentPageData) + ',';
-      fs.appendFile("datos/productos.json", currentPageData, 'utf8', function (err) {
+      fs.appendFile("datos/bebidas.json", currentPageData, 'utf8', function (err) {
         if (err) {
           return console.log(err);
         }
